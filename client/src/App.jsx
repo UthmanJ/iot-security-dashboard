@@ -76,11 +76,17 @@ function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <h2 className="text-xl font-semibold text-slate-200 mb-4">Devices</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {devices.map((device) => (
-              <DeviceCard key={device._id} device={device} />
-            ))}
-          </div>
+          {devices.length === 0 ? (
+            <div className="bg-slate-800 border border-slate-700 rounded-lg p-8 text-center text-slate-400">
+              No devices found. Run the seed script to add sample data.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {devices.map((device) => (
+                <DeviceCard key={device._id} device={device} />
+              ))}
+            </div>
+          )}
         </div>
 
         <div>
