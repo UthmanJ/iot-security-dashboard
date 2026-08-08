@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { getDevices, getAlerts, resolveAlert } from './services/api';
 import DashboardSummary from './components/DashboardSummary';
 import DeviceCard from './components/DeviceCard';
 import AlertsPanel from './components/AlertsPanel';
+import DeviceDetail from './pages/DeviceDetail';
 
-function App() {
+function Dashboard() {
   const [devices, setDevices] = useState([]);
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -52,7 +54,7 @@ function App() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center px-6 text-center">
         <p className="text-red-400">{error}</p>
       </div>
     );
@@ -61,10 +63,10 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-900 px-6 py-8 md:px-12">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-100">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-100">
           IoT Device Security Dashboard
         </h1>
-        <p className="text-slate-400 mt-1">
+        <p className="text-slate-400 mt-1 text-sm sm:text-base">
           Real-time monitoring of connected device security posture
         </p>
       </header>
@@ -89,6 +91,15 @@ function App() {
         </div>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/device/:id" element={<DeviceDetail />} />
+    </Routes>
   );
 }
 

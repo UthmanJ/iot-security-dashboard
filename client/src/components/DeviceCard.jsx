@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const riskColors = {
   Low: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40',
   Medium: 'bg-amber-500/20 text-amber-400 border-amber-500/40',
@@ -7,7 +9,10 @@ const riskColors = {
 
 function DeviceCard({ device }) {
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-lg p-5 hover:border-slate-600 transition-colors">
+    <Link
+      to={`/device/${device._id}`}
+      className="block bg-slate-800 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-colors"
+    >
       <div className="flex items-start justify-between mb-3">
         <div>
           <h3 className="text-slate-100 font-semibold text-lg">{device.name}</h3>
@@ -38,7 +43,7 @@ function DeviceCard({ device }) {
           </p>
         )}
       </div>
-    </div>
+    </Link>
   );
 }
 
