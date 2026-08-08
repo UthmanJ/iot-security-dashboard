@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
+import deviceRoutes from './routes/deviceRoutes.js';
+import alertRoutes from './routes/alertRoutes.js';
 
 dotenv.config();
 
@@ -15,6 +17,9 @@ connectDB();
 app.get('/', (req, res) => {
   res.json({ message: 'IoT Security Dashboard API is running 🚀' });
 });
+
+app.use('/api/devices', deviceRoutes);
+app.use('/api/alerts', alertRoutes);
 
 const PORT = process.env.PORT || 5000;
 
