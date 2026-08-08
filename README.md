@@ -8,6 +8,13 @@ Organizations managing IoT fleets (smart locks, cameras, sensors, gateways) need
 
 All device and alert data is simulated (no physical hardware involved) to keep the project fully self-contained and portable.
 
+## Live Demo
+
+🔗 **App:** https://iot-security-dashboard.netlify.app
+🔗 **API:** https://iot-security-dashboard-9ywz.onrender.com/api/devices
+
+*Note: the backend is hosted on Render's free tier and may take 30-60 seconds to wake up on first load after inactivity.*
+
 ## Features
 
 - **Device inventory** — view all monitored devices with live status (online/offline), risk level, and firmware version
